@@ -4,10 +4,12 @@ require_relative('game')
 
 
 def main_query_user_startup
+
   puts "Welcome to the game setup."
   puts ""
   puts "After entering a hidden word or phrase please pass the computer to the player."
   puts ("-" * 75)
+
   while true
     print "Your hidden word or phrase: "
     chosen_word_phrase = gets.chomp()
@@ -32,6 +34,7 @@ def main_query_user_startup
   player_name = gets.chomp()
   puts ("-" * 75)
   puts "You start with six lives, and you'll lose one with each incorrect guess."
+
   player_one = Player.new(player_name)
   word_to_guess = HiddenWord.new(chosen_word_phrase)
   this_game = Game.new(player_one, word_to_guess)
@@ -46,6 +49,7 @@ end
 
 def main_game_loop(this_game, game_ongoing, game_won)
   while game_ongoing
+
     while true
       puts ("-" * 75)
       puts "The hidden word or phrase:"
@@ -65,8 +69,10 @@ def main_game_loop(this_game, game_ongoing, game_won)
         break
       end
     end
+
     puts ("-" * 75)
     correct_guess = this_game.guess(current_guess)
+
     if !correct_guess
       puts "You guessed incorrectly!"
       puts ""
@@ -75,6 +81,7 @@ def main_game_loop(this_game, game_ongoing, game_won)
       puts "That's right!"
       puts "You have #{this_game.player().lives()} lives remaining."
     end
+
     if this_game.game_lost?()
       game_won = false
       game_ongoing = false
@@ -93,7 +100,9 @@ end
 
 
 def play_again_query()
+
   response = nil
+
   while response != true
     puts "Would you like to play again?: y/n"
     play_again = gets.chomp().downcase
@@ -107,5 +116,7 @@ def play_again_query()
       puts ("-" * 75)
     end
   end
+
   system "clear"
+  
 end

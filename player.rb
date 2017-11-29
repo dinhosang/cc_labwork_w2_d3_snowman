@@ -8,6 +8,7 @@ class Player
     @lives = 6
   end
 
+  
   def lose_life()
     @lives -= 1
   end

@@ -10,9 +10,12 @@ class HiddenWord
   def asterisked_word(guessed_letters)
     index = 0
     length = @word.length()
+
     string_to_return = ""
+
     until index == length
       found_letter = false
+
       for array_letter in guessed_letters
         if @word[index] == " "
           string_to_return.concat(" ")
@@ -25,6 +28,7 @@ class HiddenWord
           break
         end
       end
+
       if found_letter == false
         letter = '*'
         string_to_return.concat(letter)

@@ -8,6 +8,7 @@ class Game
     @guessed_letters = [nil]
   end
 
+
   def check_guesses
     guesses = @guessed_letters
     guesses_to_return = []
@@ -25,40 +26,40 @@ class Game
     if letter != " "
       @guessed_letters << letter
     end
-    # this comment block is not needed
-    # just for chceking when testing:
-    #result_asterisked_word = @hidden_word.asterisked_word(
-    #  @guessed_letters)
-    # p result_asterisked_word
+
     if @hidden_word.word.include?(letter)
       return true
     end
-    #@player.lives() -= 1 did not work! unexpected tOP_ASGN, expecting keyword_end (SyntaxError)
-    #@player.lives() -= 1
+
+
+    #if letter != " "
+    #    @player.lives() -= 1
+    #end -> thisdid not work! unexpected tOP_ASGN,
+    #       expecting keyword_end (SyntaxError)
+    #           @player.lives() -= 1 -> there was an ^ pointing between = and 1
+
+
     if letter != " "
       @player.lose_life()
     end
     return false
   end
 
+
+  # below was created for testing purposes
   def check(letter)
     return @guessed_letters.include?(letter)
   end
 
-  def send_letter(letter_array)
-    result = @hidden_word.asterisked_word(
-      letter_array)
-    return result
-  end
 
   def game_lost?()
     return true if @player.lives() <= 0
     return false
   end
 
+
   def game_won?()
-    word_current_status = @hidden_word.asterisked_word(
-      @guessed_letters)
+    word_current_status = @hidden_word.asterisked_word(@guessed_letters)
     if word_current_status.include?("*")
       return false
     else
@@ -66,13 +67,15 @@ class Game
     end
   end
 
+
   def show_asterisk_hidden_word
-    return @hidden_word.asterisked_word(
-      @guessed_letters)
+    return @hidden_word.asterisked_word(@guessed_letters)
   end
+
 
   def show_word_unhidden
     return @hidden_word.word()
   end
+
 
 end

@@ -23,11 +23,13 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_get_hidden_word
     actual = @game.hidden_word()
     expected = @hidden_word
     assert_equal(expected, actual)
   end
+
 
   def test_check_guessed_letters
     actual = @game.guessed_letters().count()
@@ -38,6 +40,7 @@ class TestGame < MiniTest::Test
     expected_2 = []
     assert_equal(expected_2, actual_2)
   end
+
 
   def test_check_letter_in_array
     @game.guess('y')
@@ -54,6 +57,7 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_guess_letter__incorrect
     letter = 'z'
     actual = @game.guess(letter)
@@ -61,13 +65,6 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
-
-  def test_send_letter_to_hidden_word_object
-    letter = ['e']
-    actual = @game.send_letter(letter)
-    expected = "**e******e"
-    assert_equal(expected, actual)
-  end
 
   def test_guess__incorrect_reduce_life
     actual = @game.player().lives()
@@ -79,6 +76,7 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_guess__correct_not_reduce_life
     actual = @game.player().lives()
     expected = 6
@@ -89,11 +87,13 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_check_game_lost__is_false
     actual = @game.game_lost?()
     expected = false
     assert_equal(expected, actual)
   end
+
 
   def test_check_game_lost__is_true
     @game.player.lives = 0
@@ -102,6 +102,7 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_check_game_won__is_false
     @second_game.guess("a")
     @second_game.guess("l")
@@ -110,7 +111,8 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
-  def test_check_game_won__is_false
+
+  def test_check_game_won__is_true
     @second_game.guess("a")
     @second_game.guess("l")
     @second_game.guess("e")
@@ -119,16 +121,19 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_show_asterisk_hidden_word
     actual = @game.show_asterisk_hidden_word()
     expected = "**********"
     assert_equal(expected, actual)
   end
 
+
   def test_show_hidden_word_unasterisked
     actual = @game.show_word_unhidden()
     expected = "ameliorate"
     assert_equal(expected, actual)
   end
+
 
 end

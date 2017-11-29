@@ -16,11 +16,13 @@ class TestPlayer < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+
   def test_get_number_of_lives
     actual = @first_player.lives()
     expected = 6
     assert_equal(expected, actual)
   end
+
 
   def test_reduce_lives_by_one
     @first_player.lose_life()
@@ -28,5 +30,6 @@ class TestPlayer < MiniTest::Test
     expected = 5
     assert_equal(expected, actual)
   end
+
 
 end
