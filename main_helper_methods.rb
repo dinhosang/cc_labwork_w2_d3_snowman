@@ -6,8 +6,16 @@ require_relative('game')
 def main_query_user_startup
   p "Welcome to the game setup."
   p "After entering a hidden word or phrase please pass the computer to the player."
-  print "Your hidden word or phrase: "
-  chosen_word = gets.chomp()
+
+  while true
+    print "Your hidden word or phrase: "
+    chosen_word_phrase = gets.chomp()
+    if chosen_word_phrase.match(/^[[:alpha:]]+$/)
+      break
+    else
+      p "Please only use letters of the english alphabet"
+    end
+  end
 
   system "clear"
 
@@ -18,7 +26,7 @@ def main_query_user_startup
   p "You start with six lives, and you'll lose one with each incorrect guess."
 
   player_one = Player.new(player_name)
-  word_to_guess = HiddenWord.new(chosen_word)
+  word_to_guess = HiddenWord.new(chosen_word_phrase)
   this_game = Game.new(player_one, word_to_guess)
 
   game_ongoing = true
