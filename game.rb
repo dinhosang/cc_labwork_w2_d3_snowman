@@ -1,9 +1,10 @@
 class Game
 
-  attr_reader :player
+  attr_reader :player, :word
 
   def initialize(player, word)
     @player = player
+    @word = word
   end
 
 

@@ -21,5 +21,10 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_get_hidden_word
+    actual = @game.word()
+    expected = @hidden_word
+    assert_equal(expected, actual)
+  end
 
 end
