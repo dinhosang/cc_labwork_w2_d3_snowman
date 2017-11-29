@@ -11,17 +11,23 @@ def main_query_user_startup
   while true
     print "Your hidden word or phrase: "
     chosen_word_phrase = gets.chomp()
-    if chosen_word_phrase.match(/^[[:alpha:]]+$/)
-      break
+    if !chosen_word_phrase.match(/^[[:alpha:]]+$/)
+      split_phrase = chosen_word_phrase.split(" ")
+      join_phrase = split_phrase.join()
+      if !join_phrase.match(/^[[:alpha:]]+$/)
+        puts "Please only use letters of the english alphabet in your words"
+        puts ("-" * 75)
+      else
+        break
+      end
     else
-      puts "Please only use letters of the english alphabet"
-      puts ("-" * 75)
+      break
     end
   end
 
   system "clear"
 
-  puts "Welcome to the game!"
+  puts "Welcome to the game player one!"
   print "Please enter your name: "
   player_name = gets.chomp()
   puts ("-" * 75)
