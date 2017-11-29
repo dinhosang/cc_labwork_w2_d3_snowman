@@ -14,6 +14,11 @@ class HiddenWord
     until index == length
       found_letter = false
       for array_letter in guessed_letters
+        if @word[index] == " "
+          string_to_return.concat(" ")
+          found_letter = true
+          break
+        end
         if @word[index] == array_letter
           string_to_return.concat(array_letter)
           found_letter = true

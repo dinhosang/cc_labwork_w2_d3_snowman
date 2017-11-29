@@ -5,13 +5,28 @@ class Game
   def initialize(player, word)
     @player = player
     @hidden_word = word
-    @guessed_letters = []
+    @guessed_letters = [nil]
+  end
+
+  def check_guesses
+    guesses = @guessed_letters
+    guesses_to_return = []
+    for guess in guesses
+      if guess != nil
+         guesses_to_return.push(guess)
+       end
+     end
+    return guesses_to_return
   end
 
 
   def guess(letter)
     letter = letter.downcase()
-    @guessed_letters << letter
+    if letter != " "
+      @guessed_letters << letter
+    end
+    # this comment block is not needed
+    # just for chceking when testing:
     #result_asterisked_word = @hidden_word.asterisked_word(
     #  @guessed_letters)
     # p result_asterisked_word
@@ -52,6 +67,10 @@ class Game
   def show_asterisk_hidden_word
     return @hidden_word.asterisked_word(
       @guessed_letters)
-    end
+  end
+
+  def show_word_unhidden
+    return @hidden_word.word()
+  end
 
 end
