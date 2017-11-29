@@ -27,4 +27,10 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_check_guessed_letters
+    actual = @game.guessed_letters().count()
+    expected = 0
+    assert_equal(expected, actual)
+  end
+
 end
