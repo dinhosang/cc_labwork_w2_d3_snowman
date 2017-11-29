@@ -1,6 +1,7 @@
 class Player
 
-  attr_reader :name, :lives
+  attr_reader :name
+  attr_accessor :lives
 
   def initialize(name)
     @name = name

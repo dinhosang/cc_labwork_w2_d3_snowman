@@ -33,4 +33,10 @@ class Game
       letter_array)
     return result
   end
+
+  def game_lost?()
+    return true if @player.lives() <= 0
+    return false
+  end
+
 end

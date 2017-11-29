@@ -83,4 +83,18 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_check_game_lost__is_false
+    actual = @game.game_lost?()
+    expected = false
+    assert_equal(expected, actual)
+  end
+
+  def test_check_game_lost__is_true
+    @game.player.lives = 0
+    actual = @game.game_lost?()
+    expected = true
+    assert_equal(expected, actual)
+  end
+
+
 end
