@@ -44,16 +44,23 @@ class TestGame < MiniTest::Test
   def test_guess_letter__correct
     letter = 't'
     actual = @game.guess(letter)
-    expected = "You guessed correctly"
+    expected = true
     assert_equal(expected, actual)
   end
 
   def test_guess_letter__incorrect
     letter = 'z'
     actual = @game.guess(letter)
-    expected = "You guessed incorrectly"
+    expected = false
     assert_equal(expected, actual)
   end
 
+
+  def test_send_letter_to_hidden_word_object
+    letter = ['e']
+    actual = @game.send_letter(letter)
+    expected = "**e******e"
+    assert_equal(expected, actual)
+  end
 
 end
