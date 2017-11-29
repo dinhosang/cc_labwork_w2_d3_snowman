@@ -40,4 +40,11 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_guess_letter__incorrect
+    letter = 'z'
+    actual = @game.guess(letter)
+    expected = "You guessed incorrectly"
+    assert_equal(expected, actual)
+  end
+
 end

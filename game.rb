@@ -13,6 +13,7 @@ class Game
     if @hidden_word.word.include?(letter)
       return "You guessed correctly"
     end
+    return "You guessed incorrectly"
   end
 
 end
