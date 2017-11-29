@@ -12,8 +12,8 @@ class Game
   def guess(letter)
     letter = letter.downcase()
     @guessed_letters << letter
-    result_asterisked_word = @hidden_word.asterisked_word(
-      @guessed_letters)
+    #result_asterisked_word = @hidden_word.asterisked_word(
+    #  @guessed_letters)
     # p result_asterisked_word
     if @hidden_word.word.include?(letter)
       return true
