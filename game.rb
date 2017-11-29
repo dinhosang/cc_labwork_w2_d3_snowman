@@ -18,7 +18,10 @@ class Game
     if @hidden_word.word.include?(letter)
       return true
     end
-      return false
+    #@player.lives() -= 1 did not work! unexpected tOP_ASGN, expecting keyword_end (SyntaxError)
+    #@player.lives() -= 1
+    @player.lose_life()
+    return false
   end
 
   def check(letter)

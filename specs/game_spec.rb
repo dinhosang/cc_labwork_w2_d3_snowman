@@ -63,4 +63,24 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_guess__incorrect_reduce_life
+    actual = @game.player().lives()
+    expected = 6
+    assert_equal(expected, actual)
+    @game.guess('g')
+    actual = @game.player().lives()
+    expected = 5
+    assert_equal(expected, actual)
+  end
+
+  def test_guess__correct_not_reduce_life
+    actual = @game.player().lives()
+    expected = 6
+    assert_equal(expected, actual)
+    @game.guess('e')
+    actual = @game.player().lives()
+    expected = 6
+    assert_equal(expected, actual)
+  end
+
 end
