@@ -33,6 +33,14 @@ class TestGame < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_check_letter_in_array
+    @game.guess('y')
+    actual = @game.check('y')
+    expected = true
+    assert_equal(expected, actual)
+  end
+
+
   def test_guess_letter__correct
     letter = 't'
     actual = @game.guess(letter)
