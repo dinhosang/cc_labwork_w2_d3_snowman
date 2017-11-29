@@ -22,7 +22,7 @@ class TestGame < MiniTest::Test
   end
 
   def test_get_hidden_word
-    actual = @game.word()
+    actual = @game.hidden_word()
     expected = @hidden_word
     assert_equal(expected, actual)
   end
@@ -30,6 +30,13 @@ class TestGame < MiniTest::Test
   def test_check_guessed_letters
     actual = @game.guessed_letters().count()
     expected = 0
+    assert_equal(expected, actual)
+  end
+
+  def test_guess_letter__correct
+    letter = 't'
+    actual = @game.guess(letter)
+    expected = "You guessed correctly"
     assert_equal(expected, actual)
   end
 
