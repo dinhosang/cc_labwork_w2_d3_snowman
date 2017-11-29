@@ -49,4 +49,9 @@ class Game
     end
   end
 
+  def show_asterisk_hidden_word
+    return @hidden_word.asterisked_word(
+      @guessed_letters)
+    end
+
 end

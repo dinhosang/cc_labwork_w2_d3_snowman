@@ -111,9 +111,13 @@ class TestGame < MiniTest::Test
     @second_game.guess("l")
     @second_game.guess("e")
     actual = @second_game.game_won?()
-    expected = true 
+    expected = true
     assert_equal(expected, actual)
   end
 
-
+  def test_show_asterisk_hidden_word
+    actual = @game.show_asterisk_hidden_word()
+    expected = "**********"
+    assert_equal(expected, actual)
+  end
 end
