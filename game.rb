@@ -35,7 +35,9 @@ class Game
     end
     #@player.lives() -= 1 did not work! unexpected tOP_ASGN, expecting keyword_end (SyntaxError)
     #@player.lives() -= 1
-    @player.lose_life()
+    if letter != " "
+      @player.lose_life()
+    end
     return false
   end
 

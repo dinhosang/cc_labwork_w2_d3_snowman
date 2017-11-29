@@ -4,27 +4,28 @@ require_relative('game')
 
 
 def main_query_user_startup
-  p "Welcome to the game setup."
-  p "After entering a hidden word or phrase please pass the computer to the player."
-
+  puts "Welcome to the game setup."
+  puts ""
+  puts "After entering a hidden word or phrase please pass the computer to the player."
+  puts ("-" * 75)
   while true
     print "Your hidden word or phrase: "
     chosen_word_phrase = gets.chomp()
     if chosen_word_phrase.match(/^[[:alpha:]]+$/)
       break
     else
-      p "Please only use letters of the english alphabet"
+      puts "Please only use letters of the english alphabet"
+      puts ("-" * 75)
     end
   end
 
   system "clear"
 
-  p "Welcome to the game!"
+  puts "Welcome to the game!"
   print "Please enter your name: "
   player_name = gets.chomp()
-
-  p "You start with six lives, and you'll lose one with each incorrect guess."
-
+  puts ("-" * 75)
+  puts "You start with six lives, and you'll lose one with each incorrect guess."
   player_one = Player.new(player_name)
   word_to_guess = HiddenWord.new(chosen_word_phrase)
   this_game = Game.new(player_one, word_to_guess)
@@ -39,65 +40,65 @@ end
 
 def main_game_loop(this_game, game_ongoing, game_won)
   while game_ongoing
-    p this_game.show_asterisk_hidden_word
-    p "Please guess a letter:"
-    current_guess = gets.chomp()
+    while true
+      puts ("-" * 75)
+      puts "The hidden word or phrase:"
+      puts this_game.show_asterisk_hidden_word
+      puts ""
+      puts "List of guessed letters:"
+      p this_game.check_guesses()
+      puts ""
+      puts "Please guess a letter:"
+      current_guess = gets.chomp()
+      if !current_guess.match(/^[[:alpha:]]+$/)
+        puts "Please only use a letter in the english alphabet"
+      elsif current_guess.length() != 1
+        puts "Please only enter one letter at a time"
+      else
+        system "clear"
+        break
+      end
+    end
+    puts ("-" * 75)
     correct_guess = this_game.guess(current_guess)
     if !correct_guess
-      p "You guessed incorrectly!"
-      p "You have #{this_game.player().lives()} lives remaining."
-      p "Your guessed letters:"
-      p this_game.check_guesses()
+      puts "You guessed incorrectly!"
+      puts ""
+      puts "You have #{this_game.player().lives()} lives remaining."
     else
-      p "That's right!"
-      p "You have #{this_game.player().lives()} lives remaining."
-      p "Your guessed letters:"
-      p this_game.check_guesses()
+      puts "That's right!"
+      puts "You have #{this_game.player().lives()} lives remaining."
     end
     if this_game.game_lost?()
       game_won = false
       game_ongoing = false
-      p "The snowman melted, maybe next time!"
-      p "The word was: #{this_game.show_word_unhidden}"
+      puts "The snowman melted, maybe next time!"
+      puts "The word was: #{this_game.show_word_unhidden}"
+      puts ("-" * 75)
     elsif this_game.game_won?()
       game_won = true
       game_ongoing = false
-      p "Congratulations, you won the game!"
-      p "The word was: #{this_game.show_asterisk_hidden_word}"
+      puts "Congratulations, you won the game!"
+      puts "The word was: #{this_game.show_asterisk_hidden_word}"
+      puts ("-" * 75)
     end
   end
-  return game_won
 end
 
 
-def game_result_loop(game_result)
-  if game_result
-    response = nil
-    while response != true
-      p "Would you like to play again?: y/n"
-      play_again = gets.chomp().downcase
-      if play_again == 'y'
-        response = true
-      elsif play_again == 'n'
-        response = true
-        exit
-      else
-        p "Please enter y or n for yes or no"
-      end
-    end
-  else
-    response = nil
-    while response != true
-      p "Would you like to play again?: y/n"
-      play_again = gets.chomp().downcase
-      if play_again == 'y'
-        response = true
-      elsif play_again == 'n'
-        system "clear"
-        exit
-      else
-        p "Please enter y or n for yes or no"
-      end
+def play_again_query()
+  response = nil
+  while response != true
+    puts "Would you like to play again?: y/n"
+    play_again = gets.chomp().downcase
+    if play_again == 'y'
+      response = true
+    elsif play_again == 'n'
+      system "clear"
+      exit
+    else
+      puts "Please enter y or n for yes or no"
+      puts ("-" * 75)
     end
   end
   system "clear"
