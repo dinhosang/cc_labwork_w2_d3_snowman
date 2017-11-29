@@ -22,4 +22,6 @@ class Game
     return @guessed_letters.include?(letter)
   end
 
+
+
 end
