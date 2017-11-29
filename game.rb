@@ -39,4 +39,14 @@ class Game
     return false
   end
 
+  def game_won?()
+    word_current_status = @hidden_word.asterisked_word(
+      @guessed_letters)
+    if word_current_status.include?("*")
+      return false
+    else
+      return true
+    end
+  end
+
 end

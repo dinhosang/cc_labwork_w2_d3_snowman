@@ -12,6 +12,8 @@ class TestGame < MiniTest::Test
     @hidden_word = HiddenWord.new("ameliorate")
     @player = Player.new("Terrence")
     @game = Game.new(@player, @hidden_word)
+    @short_word = HiddenWord.new("ale")
+    @second_game = Game.new(@player, @short_word)
   end
 
 
@@ -93,6 +95,23 @@ class TestGame < MiniTest::Test
     @game.player.lives = 0
     actual = @game.game_lost?()
     expected = true
+    assert_equal(expected, actual)
+  end
+
+  def test_check_game_won__is_false
+    @second_game.guess("a")
+    @second_game.guess("l")
+    actual = @second_game.game_won?()
+    expected = false
+    assert_equal(expected, actual)
+  end
+
+  def test_check_game_won__is_false
+    @second_game.guess("a")
+    @second_game.guess("l")
+    @second_game.guess("e")
+    actual = @second_game.game_won?()
+    expected = true 
     assert_equal(expected, actual)
   end
 
