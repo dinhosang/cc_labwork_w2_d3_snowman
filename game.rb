@@ -30,15 +30,11 @@ class Game
     if @hidden_word.word.include?(letter)
       return true
     end
-
-
     #if letter != " "
     #    @player.lives() -= 1
     #end -> thisdid not work! unexpected tOP_ASGN,
     #       expecting keyword_end (SyntaxError)
     #           @player.lives() -= 1 -> there was an ^ pointing between = and 1
-
-
     if letter != " "
       @player.lose_life()
     end

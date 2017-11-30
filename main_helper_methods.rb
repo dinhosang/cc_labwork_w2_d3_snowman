@@ -86,13 +86,13 @@ def main_game_loop(this_game, game_ongoing, game_won)
       game_won = false
       game_ongoing = false
       puts "The snowman melted, maybe next time!"
-      puts "The word was: #{this_game.show_word_unhidden}"
+      puts "The answer was: #{this_game.show_word_unhidden}"
       puts ("-" * 75)
     elsif this_game.game_won?()
       game_won = true
       game_ongoing = false
       puts "Congratulations, you won the game!"
-      puts "The word was: #{this_game.show_asterisk_hidden_word}"
+      puts "The answer was: #{this_game.show_asterisk_hidden_word}"
       puts ("-" * 75)
     end
   end
@@ -118,5 +118,5 @@ def play_again_query()
   end
 
   system "clear"
-  
+
 end

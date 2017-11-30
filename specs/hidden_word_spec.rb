@@ -18,13 +18,6 @@ class TestHiddenWord < MiniTest::Test
   end
 
 
-  # def test_show_asterisk_hidden_word
-  #   actual = @hidden_word.asterisked_word()
-  #   expected = "********"
-  #   assert_equal(expected, actual)
-  # end
-
-
   def test_show_asterisk_hidden_word__with_empty_array
     practice_array = []
     actual = @hidden_word.asterisked_word(practice_array)
